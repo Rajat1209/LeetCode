@@ -26,4 +26,41 @@
 // -109 <= target <= 109
 // Only one valid answer exists.
 
+#include<bits/stdc++.h>
+using namespace std;
+    vector<int> twoSum(vector<int>& nums, int target) {
+         for(int i=0;i<nums.size();++i)
+         {
+             vector<int>::iterator it;
+             it=find(nums.begin(),nums.end(),target-nums[i]);
+             
+             if(it!=nums.end()&&(it-nums.begin())!=i)
+             {
+                 int x=it-nums.begin();
+                 return vector<int>{i,x};
+             }
+         }
+        return vector<int>{};
+}
 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int target;
+        int n;
+        cin>>n>>target;
+        vector<int> nums;
+        for(int i=0;i<n;++i)
+        {
+            int x;
+            cin>>x;
+            nums.push_back(x);
+        }
+        vector<int> ans=twoSum(nums,target);
+        for(int i:ans)
+            cout<<i<<" ";
+    }
+}
